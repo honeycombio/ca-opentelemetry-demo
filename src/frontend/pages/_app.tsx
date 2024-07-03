@@ -11,7 +11,7 @@ import { ThemeProvider } from 'styled-components';
 import Theme from '../styles/Theme';
 import HoneycombFrontendTracer from '../utils/telemetry/HoneycombFrontendTracer';
 // import SessionGateway from '../gateways/Session.gateway';
-import { OpenFeatureProvider, OpenFeature } from '@openfeature/react-sdk';
+// import { OpenFeatureProvider, OpenFeature } from '@openfeature/react-sdk';
 // import { FlagdWebProvider } from '@openfeature/flagd-web-provider';
 
 declare global {
@@ -34,15 +34,13 @@ const queryClient = new QueryClient();
 function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={Theme}>
-      <OpenFeatureProvider>
-        <QueryClientProvider client={queryClient}>
-          <CurrencyProvider>
-            <CartProvider>
-              <Component {...pageProps} />
-            </CartProvider>
-          </CurrencyProvider>
-        </QueryClientProvider>
-      </OpenFeatureProvider>
+      <QueryClientProvider client={queryClient}>
+        <CurrencyProvider>
+          <CartProvider>
+            <Component {...pageProps} />
+          </CartProvider>
+        </CurrencyProvider>
+      </QueryClientProvider>
     </ThemeProvider>
   );
 }
